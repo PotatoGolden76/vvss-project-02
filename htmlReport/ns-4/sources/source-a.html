@@ -1,0 +1,126 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > CrudRepository</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">repository</a>
+</div>
+
+<h1>Coverage Summary for Class: CrudRepository (repository)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">CrudRepository</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package repository;
+&nbsp;import validation.ValidationException;
+&nbsp;
+&nbsp;/**
+&nbsp; * CRUD operations repository interface
+&nbsp; * @param &lt;ID&gt; - type E must have an attribute of type ID
+&nbsp; * @param &lt;E&gt; - type of entities saved in repository
+&nbsp; */
+&nbsp;public interface CrudRepository&lt;ID, E&gt; {
+&nbsp;    /**
+&nbsp;     *
+&nbsp;     * @param id -the id of the entity to be returned
+&nbsp;     * id must not be null
+&nbsp;     * @return the entity with the specified id
+&nbsp;     * or null - if there is no entity with the given id
+&nbsp;     * @throws IllegalArgumentException
+&nbsp;     * if id is null.
+&nbsp;     */
+&nbsp;    E findOne(ID id);
+&nbsp;    /**
+&nbsp;     *
+&nbsp;     * @return all entities
+&nbsp;     */
+&nbsp;    Iterable&lt;E&gt; findAll();
+&nbsp;    /**
+&nbsp;     *
+&nbsp;     * @param entity
+&nbsp;     * entity must be not null
+&nbsp;     * @return null- if the given entity is saved
+&nbsp;     * otherwise returns the entity (id already exists)
+&nbsp;     * @throws ValidationException
+&nbsp;     * if the entity is not valid
+&nbsp;     * @throws IllegalArgumentException
+&nbsp;     * if the given entity is null. *
+&nbsp;     */
+&nbsp;    E save(E entity) throws ValidationException;
+&nbsp;    /**
+&nbsp;     * removes the entity with the specified id
+&nbsp;     * @param id
+&nbsp;     * id must be not null
+&nbsp;     * @return the removed entity or null if there is no entity with the given id
+&nbsp;     * @throws IllegalArgumentException
+&nbsp;     * if the given id is null.
+&nbsp;     */
+&nbsp;    E delete(ID id);
+&nbsp;    /**
+&nbsp;     *
+&nbsp;     * @param entity
+&nbsp;     * entity must not be null
+&nbsp;     * @return null - if the entity is updated,
+&nbsp;     * otherwise returns the entity - (e.g id does not exist).
+&nbsp;     * @throws IllegalArgumentException
+&nbsp;     * if the given entity is null.
+&nbsp;     * @throws ValidationException
+&nbsp;     * if the entity is not valid.
+&nbsp;     */
+&nbsp;    E update(E entity);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-03-28 13:51</div>
+</div>
+</body>
+</html>

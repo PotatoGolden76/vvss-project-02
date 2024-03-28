@@ -1,0 +1,207 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Nota</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">domain</a>
+</div>
+
+<h1>Coverage Summary for Class: Nota (domain)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Nota</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    18.2%
+  </span>
+  <span class="absValue">
+    (2/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    43.8%
+  </span>
+  <span class="absValue">
+    (7/16)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package domain;
+&nbsp;
+&nbsp;import repository.HasID;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;
+&nbsp;public class Nota implements HasID&lt;String&gt; {
+&nbsp;    private String id;
+&nbsp;    private String idStudent;
+&nbsp;    private String idTema;
+&nbsp;    private double nota;
+&nbsp;    private LocalDate data;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Class Constructor
+&nbsp;     * @param id - id-ul notei
+&nbsp;     * @param idStudent - id-ul studentului
+&nbsp;     * @param idTema - id-ul temei
+&nbsp;     * @param nota - valoarea notei
+&nbsp;     * @param data - data in care a fost predata tema
+&nbsp;     */
+<b class="fc">&nbsp;    public Nota(String id, String idStudent, String idTema, double nota, LocalDate data){</b>
+<b class="fc">&nbsp;        this.id = id;</b>
+<b class="fc">&nbsp;        this.idStudent = idStudent;</b>
+<b class="fc">&nbsp;        this.idTema = idTema;</b>
+<b class="fc">&nbsp;        this.nota = nota;</b>
+<b class="fc">&nbsp;        this.data = data;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return id-ul studentului
+&nbsp;     */
+&nbsp;    public String getIdStudent() {
+<b class="nc">&nbsp;        return idStudent;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return id-ul temei
+&nbsp;     */
+&nbsp;    public String getIdTema() {
+<b class="nc">&nbsp;        return idTema;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return valoarea notei
+&nbsp;     */
+&nbsp;    public double getNota() {
+<b class="nc">&nbsp;        return nota;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Modifica valoarea unei note
+&nbsp;     * @param nota - noua valoarea a notei
+&nbsp;     */
+&nbsp;    public void setNota(double nota) {
+<b class="nc">&nbsp;        this.nota = nota;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return data in care a fost predata nota
+&nbsp;     */
+&nbsp;    public LocalDate getData() {
+<b class="nc">&nbsp;        return data;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return idStudent + &quot;,&quot; + idTema + &quot;,&quot; + nota + &quot;,&quot; + data;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return id-ul notei
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getID() {
+<b class="fc">&nbsp;        return this.id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * modifica id-ul notei
+&nbsp;     * @param id - noul id
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void setID(String id) {
+<b class="nc">&nbsp;        this.id = id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * modifica id-ul studentului
+&nbsp;     * @param idStudent - noul id
+&nbsp;     */
+&nbsp;    public void setIdStudent(String idStudent) {
+<b class="nc">&nbsp;        this.idStudent = idStudent;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * modifica id-ul temei
+&nbsp;     * @param idTema - noul id
+&nbsp;     */
+&nbsp;    public void setIdTema(String idTema) {
+<b class="nc">&nbsp;        this.idTema = idTema;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-03-28 13:51</div>
+</div>
+</body>
+</html>

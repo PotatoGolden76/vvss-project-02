@@ -1,6 +1,7 @@
 package ssvv.lab1;
 
 import domain.Student;
+import domain.Tema;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -67,6 +68,29 @@ public class AppTest
         try {
             service.addStudent(testStudent);
 //            service.deleteStudent("test_id");
+            fail();
+        } catch (Exception e){
+            assertTrue( true );
+        }
+    }
+
+    public void testAddTema1()
+    {
+        Tema testTema = new Tema("test_tema", "test_description", 1, 10);
+        try {
+            service.addTema(testTema);
+        } catch (Exception e){
+            fail();
+        }
+        service.deleteTema("test_tema");
+        assertTrue( true );
+    }
+
+    public void testAddTema2()
+    {
+        Tema testTema = new Tema("test_tema", "test_description", 1, 15);
+        try {
+            service.addTema(testTema);
             fail();
         } catch (Exception e){
             assertTrue( true );

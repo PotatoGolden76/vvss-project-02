@@ -1,0 +1,182 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > NotaXMLRepo</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">repository</a>
+</div>
+
+<h1>Coverage Summary for Class: NotaXMLRepo (repository)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">NotaXMLRepo</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (2/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    52.9%
+  </span>
+  <span class="absValue">
+    (18/34)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package repository;
+&nbsp;
+&nbsp;import domain.Nota;
+&nbsp;import java.time.LocalDate;
+&nbsp;import domain.Nota;
+&nbsp;import org.w3c.dom.Document;
+&nbsp;import org.w3c.dom.Element;
+&nbsp;import org.w3c.dom.NodeList;
+&nbsp;
+&nbsp;public class NotaXMLRepo extends AbstractXMLRepository&lt;String, Nota&gt; {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Class constructor
+&nbsp;     * @param filename - numele fisierului
+&nbsp;     */
+&nbsp;    public NotaXMLRepo(String filename) {
+<b class="fc">&nbsp;        super( filename);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Element createElementfromEntity(Document document, Nota entity) {
+<b class="nc">&nbsp;        Element e = document.createElement(&quot;nota&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        Element idStudent = document.createElement(&quot;idStudent&quot;);</b>
+<b class="nc">&nbsp;        idStudent.setTextContent(entity.getIdStudent());</b>
+<b class="nc">&nbsp;        e.appendChild(idStudent);</b>
+&nbsp;
+<b class="nc">&nbsp;        Element idTema = document.createElement(&quot;idTema&quot;);</b>
+<b class="nc">&nbsp;        idTema.setTextContent(entity.getIdTema());</b>
+<b class="nc">&nbsp;        e.appendChild(idTema);</b>
+&nbsp;
+<b class="nc">&nbsp;        Element notaProf = document.createElement(&quot;notaProf&quot;);</b>
+<b class="nc">&nbsp;        Double i=entity.getNota();</b>
+<b class="nc">&nbsp;        notaProf.setTextContent(i.toString());</b>
+<b class="nc">&nbsp;        e.appendChild(notaProf);</b>
+&nbsp;
+<b class="nc">&nbsp;        Element data = document.createElement(&quot;dataCurenta&quot;);</b>
+<b class="nc">&nbsp;        LocalDate d = entity.getData();</b>
+<b class="nc">&nbsp;        data.setTextContent(d.toString());</b>
+<b class="nc">&nbsp;        e.appendChild(data);</b>
+&nbsp;
+<b class="nc">&nbsp;        return e;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Extrage informatia despre nota dintr-un XML
+&nbsp;     * @param element - elem XML din care ia datele notei
+&nbsp;     * @return nota
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public Nota extractEntity(Element element) {
+<b class="fc">&nbsp;        String id = element.getAttribute(&quot;id&quot;);</b>
+<b class="fc">&nbsp;        NodeList nods = element.getChildNodes();</b>
+&nbsp;
+<b class="fc">&nbsp;        String studentId =element.getElementsByTagName(&quot;idStudent&quot;)</b>
+<b class="fc">&nbsp;                .item(0)</b>
+<b class="fc">&nbsp;                .getTextContent();</b>
+&nbsp;
+<b class="fc">&nbsp;        String temaId =element.getElementsByTagName(&quot;idTema&quot;)</b>
+<b class="fc">&nbsp;                .item(0)</b>
+<b class="fc">&nbsp;                .getTextContent();</b>
+&nbsp;
+<b class="fc">&nbsp;        String notaProf =element.getElementsByTagName(&quot;notaProf&quot;)</b>
+<b class="fc">&nbsp;                .item(0)</b>
+<b class="fc">&nbsp;                .getTextContent();</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;        String data =element.getElementsByTagName(&quot;dataCurenta&quot;)</b>
+<b class="fc">&nbsp;                .item(0)</b>
+<b class="fc">&nbsp;                .getTextContent();</b>
+&nbsp;
+<b class="fc">&nbsp;        String[] d = data.split(&quot;-&quot;);</b>
+<b class="fc">&nbsp;        LocalDate dat = LocalDate.of(Integer.parseInt(d[0]), Integer.parseInt(d[1]), Integer.parseInt(d[2]));</b>
+&nbsp;
+<b class="fc">&nbsp;        return new Nota(id,studentId,temaId,Double.parseDouble(notaProf),dat);</b>
+&nbsp;        }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-03-28 13:51</div>
+</div>
+</body>
+</html>

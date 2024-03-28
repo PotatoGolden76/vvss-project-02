@@ -1,0 +1,200 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Tema</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">domain</a>
+</div>
+
+<h1>Coverage Summary for Class: Tema (domain)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Tema</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    20%
+  </span>
+  <span class="absValue">
+    (2/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    42.9%
+  </span>
+  <span class="absValue">
+    (6/14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package domain;
+&nbsp;
+&nbsp;
+&nbsp;import repository.HasID;
+&nbsp;
+&nbsp;
+&nbsp;public class Tema implements HasID&lt;String&gt; {
+&nbsp;    private String nrTema;
+&nbsp;    private String descriere;
+&nbsp;    private int deadline;
+&nbsp;    private int primire;
+&nbsp;
+&nbsp;    /**
+&nbsp;     *
+&nbsp;     * @param nrTema - numarul temei
+&nbsp;     * @param descriere - descrierea unei teme
+&nbsp;     * @param deadline - deadlineul unei teme
+&nbsp;     * @param primire - saptamana de primirea unei teme
+&nbsp;     * Class Constructor
+&nbsp;     */
+<b class="fc">&nbsp;    public Tema(String nrTema, String descriere, int deadline, int primire) {</b>
+<b class="fc">&nbsp;        this.nrTema = nrTema;</b>
+<b class="fc">&nbsp;        this.descriere = descriere;</b>
+<b class="fc">&nbsp;        this.deadline = deadline;</b>
+<b class="fc">&nbsp;        this.primire = primire;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return descrierea unei teme
+&nbsp;     */
+&nbsp;    public String getDescriere() {
+<b class="nc">&nbsp;        return descriere;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * modifica descrierea unei teme
+&nbsp;     * @param descriere - noua descriere
+&nbsp;     */
+&nbsp;    public void setDescriere(String descriere) {
+<b class="nc">&nbsp;        this.descriere = descriere;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return deadlineul unei teme
+&nbsp;     */
+&nbsp;    public int getDeadline() {
+<b class="nc">&nbsp;        return deadline;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * modifica deadlineul unei note
+&nbsp;     */
+&nbsp;    public void setDeadline(int deadline) {
+<b class="nc">&nbsp;        this.deadline = deadline;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return saptamana primirii unei teme
+&nbsp;     */
+&nbsp;    public int getPrimire() {
+<b class="nc">&nbsp;        return primire;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * modifica saptamana primirii unei teme
+&nbsp;     * @param primire - noua saptamana de primire
+&nbsp;     */
+&nbsp;    public void setPrimire(int primire) {
+<b class="nc">&nbsp;        this.primire = primire;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return numarul unei teme
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String getID() {
+<b class="fc">&nbsp;        return this.nrTema;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * schimba numarul unei teme
+&nbsp;     * @param nrTema - noul numar al temei
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void setID(String nrTema) {
+<b class="nc">&nbsp;        this.nrTema = nrTema;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return un obiect de tip Tema sub forma unui string
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return nrTema + &quot;,&quot; + descriere + &quot;,&quot; + deadline + &quot;,&quot; + primire;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-03-28 13:51</div>
+</div>
+</body>
+</html>

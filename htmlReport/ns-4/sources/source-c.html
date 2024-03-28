@@ -1,0 +1,93 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > FileRepository</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">repository</a>
+</div>
+
+<h1>Coverage Summary for Class: FileRepository (repository)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">FileRepository</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package repository;
+&nbsp;
+&nbsp;/**
+&nbsp; * CRUD operations file repository interface
+&nbsp; * @param &lt;ID&gt; - type E must have an attribute of type ID
+&nbsp; * @param &lt;E&gt; - type of entities saved in repository
+&nbsp; */
+&nbsp;public interface FileRepository&lt;ID, E extends HasID&lt;ID&gt;&gt; {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Incarca datele din fisier
+&nbsp;     */
+&nbsp;    void loadFromFile();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Scrie un obiect nou in fisier
+&nbsp;     * @param entity - obiectul pe care il scrie
+&nbsp;     */
+&nbsp;    void saveToFile(E entity);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Rescrie fisierul
+&nbsp;     */
+&nbsp;    void writeToFile();
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-03-28 13:51</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,196 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Student</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">domain</a>
+</div>
+
+<h1>Coverage Summary for Class: Student (domain)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Student</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    20%
+  </span>
+  <span class="absValue">
+    (2/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    42.9%
+  </span>
+  <span class="absValue">
+    (6/14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package domain;
+&nbsp;
+&nbsp;import repository.HasID;
+&nbsp;
+&nbsp;public class Student implements HasID&lt;String&gt; {
+&nbsp;    private String idStudent;
+&nbsp;    private String nume;
+&nbsp;    private int grupa;
+&nbsp;    private String email;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Class Constructor
+&nbsp;     * @param idStudent - id-ul studentului
+&nbsp;     * @param nume - numele studentului
+&nbsp;     * @param grupa - grupa studentului
+&nbsp;     * @param email - emailul unui student
+&nbsp;     */
+<b class="fc">&nbsp;    public Student(String idStudent, String nume, int grupa, String email) {</b>
+<b class="fc">&nbsp;        this.idStudent = idStudent;</b>
+<b class="fc">&nbsp;        this.nume = nume;</b>
+<b class="fc">&nbsp;        this.grupa = grupa;</b>
+<b class="fc">&nbsp;        this.email = email;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return id-ul unui student
+&nbsp;     */
+&nbsp;    public String getID() {
+<b class="fc">&nbsp;        return idStudent;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * modifica id-ul unui student
+&nbsp;     * @param ID - noul id al studentului
+&nbsp;     */
+&nbsp;    public void setID(String ID) {
+<b class="nc">&nbsp;        this.idStudent = ID;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return numele studentului
+&nbsp;     */
+&nbsp;    public String getNume() {
+<b class="nc">&nbsp;        return nume;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * modifica numele studentului
+&nbsp;     * @param nume - noul nume
+&nbsp;     */
+&nbsp;    public void setNume(String nume) {
+<b class="nc">&nbsp;        this.nume = nume;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return grupa studentului
+&nbsp;     */
+&nbsp;    public int getGrupa() {
+<b class="nc">&nbsp;        return grupa;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * modifica grupa studentului
+&nbsp;     * @param grupa - noua grupa
+&nbsp;     */
+&nbsp;    public void setGrupa(int grupa) {
+<b class="nc">&nbsp;        this.grupa = grupa;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return emai-ul studentului
+&nbsp;     */
+&nbsp;    public String getEmail() {
+<b class="nc">&nbsp;        return email;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * modifica emailul studentului
+&nbsp;     * @param email - noul email
+&nbsp;     */
+&nbsp;    public void setEmail(String email) {
+<b class="nc">&nbsp;        this.email = email;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return un obiect de tip Student sub forma de string
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return idStudent + &quot;,&quot; + nume + &quot;,&quot; + grupa + &quot;,&quot; + email;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-03-28 13:51</div>
+</div>
+</body>
+</html>

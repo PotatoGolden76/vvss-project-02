@@ -1,0 +1,356 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Service</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">service</a>
+</div>
+
+<h1>Coverage Summary for Class: Service (service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Service</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    5.9%
+  </span>
+  <span class="absValue">
+    (1/17)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    10.1%
+  </span>
+  <span class="absValue">
+    (7/69)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package service;
+&nbsp;
+&nbsp;import curent.Curent;
+&nbsp;import domain.Nota;
+&nbsp;import domain.Student;
+&nbsp;import domain.Tema;
+&nbsp;
+&nbsp;import repository.*;
+&nbsp;import validation.NotaValidator;
+&nbsp;import validation.StudentValidator;
+&nbsp;import validation.TemaValidator;
+&nbsp;import validation.ValidationException;
+&nbsp;
+&nbsp;import java.io.BufferedWriter;
+&nbsp;import java.io.FileWriter;
+&nbsp;import java.io.IOException;
+&nbsp;import java.time.LocalDate;
+&nbsp;
+&nbsp;import static java.time.temporal.ChronoUnit.DAYS;
+&nbsp;
+&nbsp;/**
+&nbsp; * Clasa Service
+&nbsp; */
+&nbsp;public class Service {
+&nbsp;    //private StudentFileRepository studentFileRepository;
+&nbsp;    private StudentXMLRepo studentFileRepository;
+&nbsp;    private StudentValidator studentValidator;
+&nbsp;    //private TemaFileRepository temaFileRepository;
+&nbsp;    private TemaXMLRepo temaFileRepository;
+&nbsp;    private TemaValidator temaValidator;
+&nbsp;    //private NotaFileRepository notaFileRepository;
+&nbsp;    private NotaXMLRepo notaFileRepository;
+&nbsp;    private NotaValidator notaValidator;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Class Constructor
+&nbsp;     * @param studentFileRepository - repository student
+&nbsp;     * @param studentValidator - validator student
+&nbsp;     * @param temaFileRepository - repository tema
+&nbsp;     * @param temaValidator - validator tema
+&nbsp;     * @param notaFileRepository - repository nota
+&nbsp;     * @param notaValidator - validator nota
+&nbsp;     */
+&nbsp;    //public Service(StudentFileRepository studentFileRepository, StudentValidator studentValidator, TemaFileRepository temaFileRepository, TemaValidator temaValidator, NotaFileRepository notaFileRepository, NotaValidator notaValidator) {
+<b class="fc">&nbsp;    public Service(StudentXMLRepo studentFileRepository, StudentValidator studentValidator, TemaXMLRepo temaFileRepository, TemaValidator temaValidator, NotaXMLRepo notaFileRepository, NotaValidator notaValidator) {</b>
+&nbsp;
+<b class="fc">&nbsp;        this.studentFileRepository = studentFileRepository;</b>
+<b class="fc">&nbsp;        this.studentValidator = studentValidator;</b>
+<b class="fc">&nbsp;        this.temaFileRepository = temaFileRepository;</b>
+<b class="fc">&nbsp;        this.temaValidator = temaValidator;</b>
+<b class="fc">&nbsp;        this.notaFileRepository = notaFileRepository;</b>
+<b class="fc">&nbsp;        this.notaValidator = notaValidator;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * adauga un Student in memorie
+&nbsp;     * @param student - studentul pe care il adauga
+&nbsp;     * @return null daca studentul a fost adaugat cu succes sau studentul din memorie daca acesta exista deja
+&nbsp;     */
+&nbsp;    public Student addStudent(Student student) {
+<b class="nc">&nbsp;        studentValidator.validate(student);</b>
+<b class="nc">&nbsp;        return studentFileRepository.save(student);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sterge un student
+&nbsp;     * @param id - id-ul studentului
+&nbsp;     * @return studentul daca acesta a fost sters sau null daca studentul nu exista
+&nbsp;     */
+&nbsp;    public Student deleteStudent(String id){
+<b class="nc">&nbsp;        if(id == null || id.equals(&quot;&quot;)) {</b>
+<b class="nc">&nbsp;            throw new ValidationException(&quot;Id-ul nu poate fi null!&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return studentFileRepository.delete(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Cauta un student dupa id
+&nbsp;     * @param id - id-ul studentului
+&nbsp;     * @return studentul daca acesta exista sau null altfel
+&nbsp;     */
+&nbsp;    public Student findStudent(String id){
+<b class="nc">&nbsp;        if(id == null || id.equals(&quot;&quot;)){</b>
+<b class="nc">&nbsp;            throw new ValidationException(&quot;Id-ul nu poate fi null!&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return studentFileRepository.findOne(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Modifica un student
+&nbsp;     * @param student - noul student
+&nbsp;     * @return noul student daca s-a facut modificarea sau null daca acesta nu exista
+&nbsp;     */
+&nbsp;    public Student updateStudent(Student student){
+<b class="nc">&nbsp;        studentValidator.validate(student);</b>
+<b class="nc">&nbsp;        return studentFileRepository.update(student);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return toti studentii din memorie
+&nbsp;     */
+&nbsp;    public Iterable&lt;Student&gt; getAllStudenti(){
+<b class="nc">&nbsp;        return studentFileRepository.findAll();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Adauga o tema noua
+&nbsp;     * @param tema  - tema pe care o adauga
+&nbsp;     * @return null daca s-a facut adaugarea sau tema daca aceasta exista deja
+&nbsp;     */
+&nbsp;    public Tema addTema(Tema tema){
+<b class="nc">&nbsp;        temaValidator.validate(tema);</b>
+<b class="nc">&nbsp;        return temaFileRepository.save(tema);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sterge o tema
+&nbsp;     * @param nrTema - nr-ul temei
+&nbsp;     * @return tema daca aceasta a fost stearsa sau null daca tema nu exista
+&nbsp;     */
+&nbsp;    public Tema deleteTema(String nrTema){
+<b class="nc">&nbsp;        if(nrTema == null || nrTema.equals(&quot;&quot;)) {</b>
+<b class="nc">&nbsp;            throw new ValidationException(&quot;Id-ul nu poate fi null!&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return temaFileRepository.delete(nrTema);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Cauta o tema
+&nbsp;     * @param id - id-ul temei
+&nbsp;     * @return tema sau null daca aceasta nu exista
+&nbsp;     */
+&nbsp;    public Tema findTema(String id){
+<b class="nc">&nbsp;        if(id == null || id.equals(&quot;&quot;)){</b>
+<b class="nc">&nbsp;            throw new ValidationException(&quot;Id-ul nu poate fi null!&quot;);</b>
+<b class="nc">&nbsp;        }return temaFileRepository.findOne(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Modifica o tema
+&nbsp;     * @param tema - noua tema
+&nbsp;     * @return tema daca s-a facut modificarea sau null daca acesta nu exisra
+&nbsp;     */
+&nbsp;    public Tema updateTema(Tema tema){
+<b class="nc">&nbsp;        temaValidator.validate(tema);</b>
+<b class="nc">&nbsp;        return temaFileRepository.update(tema);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return toate temele din memorie
+&nbsp;     */
+&nbsp;    public Iterable&lt;Tema&gt; getAllTeme(){
+<b class="nc">&nbsp;        return temaFileRepository.findAll();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Adauga o nota
+&nbsp;     * @param nota - nota
+&nbsp;     * @param feedback - feedback-ul notei
+&nbsp;     * @return null daca nota a fost adaugata sau nota daca aceasta exista deja
+&nbsp;     */
+&nbsp;    public double addNota(Nota nota, String feedback){
+<b class="nc">&nbsp;        notaValidator.validate(nota);</b>
+<b class="nc">&nbsp;        Student student = studentFileRepository.findOne(nota.getIdStudent());</b>
+<b class="nc">&nbsp;        Tema tema = temaFileRepository.findOne(nota.getIdTema());</b>
+<b class="nc">&nbsp;        int predare = calculeazaSPredare(nota.getData());</b>
+<b class="nc">&nbsp;        if(predare != tema.getDeadline()){</b>
+<b class="nc">&nbsp;            if (predare-tema.getDeadline() == 1){</b>
+<b class="nc">&nbsp;                nota.setNota(nota.getNota()-2.5);</b>
+&nbsp;            }
+&nbsp;            else{
+<b class="nc">&nbsp;                throw new ValidationException(&quot;Studentul nu mai poate preda aceasta tema!&quot;);</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        notaFileRepository.save(nota);</b>
+<b class="nc">&nbsp;        String filename = &quot;fisiere/&quot; + student.getNume() + &quot;.txt&quot;;</b>
+<b class="nc">&nbsp;        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename, true))){</b>
+<b class="nc">&nbsp;            bufferedWriter.write(&quot;\nTema: &quot; + tema.getID());</b>
+<b class="nc">&nbsp;            bufferedWriter.write(&quot;\nNota: &quot; + nota.getNota());</b>
+<b class="nc">&nbsp;            bufferedWriter.write(&quot;\nPredata in saptamana: &quot; + predare);</b>
+<b class="nc">&nbsp;            bufferedWriter.write(&quot;\nDeadline: &quot; + tema.getDeadline());</b>
+<b class="nc">&nbsp;            bufferedWriter.write(&quot;\nFeedback: &quot; +feedback);</b>
+<b class="nc">&nbsp;            bufferedWriter.newLine();</b>
+<b class="nc">&nbsp;        } catch (IOException exception){</b>
+<b class="nc">&nbsp;            throw new ValidationException(exception.getMessage());</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return nota.getNota();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sterge o nota
+&nbsp;     * @param id - id-ul notei
+&nbsp;     * @return nota daca aceasta a fost stearsa sau null daca nota nu exista
+&nbsp;     */
+&nbsp;    public Nota deleteNota(String id){
+<b class="nc">&nbsp;        if(id == null || id.equals(&quot;&quot;)) {</b>
+<b class="nc">&nbsp;            throw new ValidationException(&quot;Id-ul nu poate fi null!&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return notaFileRepository.delete(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Cauta o nota
+&nbsp;     * @param id - id-ul notei
+&nbsp;     * @return nota sau null daca aceasta nu exista
+&nbsp;     */
+&nbsp;    public Nota findNota(String id){
+<b class="nc">&nbsp;        if(id == null || id.equals(&quot;&quot;)){</b>
+<b class="nc">&nbsp;            throw new ValidationException(&quot;Id-ul nu poate fi null!&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return notaFileRepository.findOne(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @return toate notele
+&nbsp;     */
+&nbsp;    public Iterable&lt;Nota&gt; getAllNote(){
+<b class="nc">&nbsp;        return notaFileRepository.findAll();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Prelungeste deadline-ul unei teme
+&nbsp;     * @param nrTema - nr-ul temei
+&nbsp;     * @param deadline - noul deadline
+&nbsp;     */
+&nbsp;    public void prelungireDeadline(String nrTema, int deadline){
+<b class="nc">&nbsp;        int diff= Curent.getCurrentWeek();</b>
+<b class="nc">&nbsp;        Tema tema = temaFileRepository.findOne(nrTema);</b>
+<b class="nc">&nbsp;        if(tema == null){</b>
+<b class="nc">&nbsp;            throw new ValidationException(&quot;Tema inexistenta!&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if(tema.getDeadline() &gt;= diff) {</b>
+<b class="nc">&nbsp;            tema.setDeadline(deadline);</b>
+<b class="nc">&nbsp;            temaFileRepository.writeToFile();</b>
+&nbsp;        }
+&nbsp;        else{
+<b class="nc">&nbsp;            throw new ValidationException(&quot;Nu se mai poate prelungi deadline-ul!&quot;);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Calculeaza saptamana de predare
+&nbsp;     * @param predare - data predarii unei teme
+&nbsp;     * @return saptamana in care a fost predata tema
+&nbsp;     */
+&nbsp;    private int calculeazaSPredare(LocalDate predare) {
+<b class="nc">&nbsp;        LocalDate startDate = Curent.getStartDate();</b>
+<b class="nc">&nbsp;        long days = DAYS.between(startDate, predare);</b>
+<b class="nc">&nbsp;        double saptamanaPredare = Math.ceil((double)days/7);</b>
+<b class="nc">&nbsp;        return (int)saptamanaPredare;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-03-28 13:51</div>
+</div>
+</body>
+</html>
