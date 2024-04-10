@@ -18,8 +18,7 @@ import validation.ValidationException;
  * Unit test for simple App.
  */
 public class TemaTest
-        extends TestCase
-{
+        extends TestCase {
     StudentValidator studentValidator = new StudentValidator();
     TemaValidator temaValidator = new TemaValidator();
     String filenameStudent = "fisiere/Studenti.xml";
@@ -37,40 +36,94 @@ public class TemaTest
      *
      * @param testName name of the test case
      */
-    public TemaTest( String testName )
-    {
-        super( testName );
+    public TemaTest(String testName) {
+        super(testName);
     }
 
     /**
      * @return the suite of tests being tested
      */
-    public static Test suite()
-    {
-        return new TestSuite( TemaTest.class );
+    public static Test suite() {
+        return new TestSuite(TemaTest.class);
     }
 
 
-    public void testAddTema1()
-    {
+    public void testAddTema1() {
         Tema testTema = new Tema("test_tema", "test_description", 1, 10);
         try {
             service.addTema(testTema);
-        } catch (Exception e){
+        } catch (Exception e) {
             fail();
         }
         service.deleteTema("test_tema");
-        assertTrue( true );
+        assertTrue(true);
     }
 
-    public void testAddTema2()
-    {
+    public void testAddTema2() {
         Tema testTema = new Tema("test_tema", "test_description", 1, 15);
         try {
             service.addTema(testTema);
             fail();
-        } catch (Exception e){
-            assertTrue( true );
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+    }
+
+    public void testTC2() {
+        Tema testTema = new Tema("", "", 8, 6);
+        try {
+            service.addTema(testTema);
+            fail();
+        } catch (ValidationException e) {
+            if (!e.getMessage().equals("Numar tema invalid!")) {
+                fail();
+            }
+        }
+    }
+
+    public void testTC3() {
+        Tema testTema = new Tema(null, "desc", 8, 6);
+        try {
+            service.addTema(testTema);
+            fail();
+        } catch (NullPointerException e) {
+            assertTrue(true);
+        }
+    }
+
+    public void testTC4() {
+        Tema testTema = new Tema("1", "", 8, 6);
+        try {
+            service.addTema(testTema);
+            fail();
+        } catch (ValidationException e) {
+            if (!e.getMessage().equals("Descriere invalida!")) {
+                fail();
+            }
+        }
+    }
+
+    public void testTC5() {
+        Tema testTema = new Tema("1", "desc", 15, 6);
+        try {
+            service.addTema(testTema);
+            fail();
+        } catch (ValidationException e) {
+            if (!e.getMessage().equals("Deadlineul trebuie sa fie intre 1-14.")) {
+                fail();
+            }
+        }
+    }
+
+    public void testTC6() {
+        Tema testTema = new Tema("1", "desc", 8, -1);
+        try {
+            service.addTema(testTema);
+            fail();
+        } catch (ValidationException e) {
+            if (!e.getMessage().equals("Saptamana primirii trebuie sa fie intre 1-14.")) {
+                fail();
+            }
         }
     }
 }
