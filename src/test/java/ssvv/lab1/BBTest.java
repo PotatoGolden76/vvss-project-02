@@ -74,7 +74,7 @@ public class BBTest
     }
 
     public void testAddGrade() {
-        Nota testNota = new Nota("test_nota", "1003", "1", 9.0, LocalDate.now());
+        Nota testNota = new Nota("test_nota", "1003", "666", 9.0, LocalDate.parse("2024-03-03"));
         try {
             service.addNota(testNota, "test_feedback");
         } catch (Exception e) {
@@ -86,8 +86,8 @@ public class BBTest
 
     public void testIntegAdd() {
         Student testStudent = new Student("test_id", "Test Student", 933, "test_email@stud.ubbcluj.ro");
-        Tema testTema = new Tema("test_tema", "test_description", 14, 1);
-        Nota testNota = new Nota("test_nota", "test_id", "test_tema", 9.0, LocalDate.now());
+        Tema testTema = new Tema("test_tema", "test_description", 4, 2);
+        Nota testNota = new Nota("test_nota", "test_id", "test_tema", 9.0, LocalDate.parse("2024-03-02"));
 
         try {
             service.addStudent(testStudent);
